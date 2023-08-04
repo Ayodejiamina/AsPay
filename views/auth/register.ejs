@@ -10,7 +10,7 @@
             <div class="form-group my-3">
                 <label for="exampleInputName">Name</label>
                 <i class="fas fa-user" id="shows"></i>
-                <input type="text" placeholder="Enter name" name="name">
+                <input type="text" placeholder="Enter name" name="name" value="<%= olds.length >0 && olds[0].name ? olds[0].name : ''  %>">
                 <% for(let err of regErr){
                   if(err.path == "name"){%>
                     <small style="color: red;"><%= err.msg%></small>
@@ -20,7 +20,7 @@
               <div class="form-group my-3">
                 <label for="exampleInputName">Email</label>
                 <i class="fas fa-envelope" id="shows"></i>
-                <input type="email" placeholder="Enter email" name="email">
+                <input type="email" placeholder="Enter email" name="email" value="<%= olds.length >0 && olds[0].email ? olds[0].email : ''  %>">
                 <% for(let err of regErr){
                   if(err.path == "email"){%>
                     <small style="color: red;"><%= err.msg%></small>
@@ -30,7 +30,7 @@
               <div class="form-group my-3">
                 <label for="exampleInputName">Phone Number</label>
                 <i class="fas fa-phone" id="showss"></i>
-                <input type="tel" placeholder="Enter Phone" name="phone">
+                <input type="tel" placeholder="Enter Phone" name="phone" value="<%=countryCode%>">
                 <% for(let err of regErr){
                   if(err.path == "phone"){%>
                     <small style="color: red;"><%= err.msg%></small>
@@ -46,8 +46,15 @@
                     <small style="color: red;"><%= err.msg%></small>
                 <%  }
                 }%>              </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"/>
+                  <label class="form-check-label" for="flexCheckChecked">Remember Me</label>
+                </div>
               <div class="text-center my-3">
                 <button type="submit" class="btn" id="play">Sign Up</button>
+              </div>
+              <div>
+                <span>Already have an account? <a href="/login" style="text-decoration: none;color:rgb(31, 114, 31) ;">Sign In</a></span>
               </div>
              
               
