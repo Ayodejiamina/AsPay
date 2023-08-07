@@ -7,7 +7,9 @@
       <div class="cont col-md-4 offset-md-4 p-3">
         <h2 class="text-center h2">Login</h2>
         <form action="/login" method="post">
+          <small style="color: red;"><%=perrors %></small>
               <div class="form-group my-3">
+
                 <label for="exampleInputName">Email</label>
                 <i class="fas fa-envelope" id="shows"></i>
                 <input type="email" placeholder="Enter email" name="email">
@@ -26,6 +28,7 @@
                     <small style="color: red;"><%= err.msg%></small>
                 <%  }
                 }%>              </div>
+                <small style="color: red;"><%=emerr %></small>
               <div class="text-center my-3">
                 <button type="submit" class="btn" id="play">Login</button>
               </div>

@@ -6,7 +6,7 @@ exports.Register = (req, res) => {
     let errors = req.flash('errors')
     let oldinput = req.flash('oldInput')
     const countryCode = "+234"
-    res.render("auth/register.ejs", { title: "Register", regErr: errors, olds: oldinput,countryCode })
+    res.render("auth/register.ejs", { title: "Register", regErr: errors, olds: oldinput, countryCode })
 }
 exports.postReg = (req, res) => {
     const { name, email, phone, password } = req.body
@@ -44,7 +44,9 @@ exports.postReg = (req, res) => {
 }
 exports.login = (req, res) => {
     let errors = req.flash('errors')
-    res.render('auth/login.ejs', { title: "Login", logErr: errors })
+    let emailErr = req.flash('eMerrors')
+    let passErr = req.flash('perror')
+    res.render('auth/login.ejs', { title: "Login", logErr: errors, emerr: emailErr, perrors: passErr })
 }
 exports.postLog = (req, res) => {
     const errors = validationResult(req)
@@ -61,7 +63,7 @@ exports.postLog = (req, res) => {
             }
         }).then(result => {
             if (!result) {
-                req.flash('errors', "invalid user details")
+                req.flash('eMerrors', "invalid user details")
                 req.session.save(() => {
                     res.redirect('/login')
                     return result;
@@ -70,7 +72,7 @@ exports.postLog = (req, res) => {
             bcrypt.compare(password, result.password).then(validate => {
                 console.log(validate)
                 if (!validate) {
-                    req.flash('error', 'Incorrect password')
+                    req.flash('perror', 'Incorrect password')
                     req.session.save(() => {
                         return res.redirect('/login')
                     })
