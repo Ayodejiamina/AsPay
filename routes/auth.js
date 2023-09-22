@@ -16,6 +16,7 @@ router.post('/login',[
     check('password').notEmpty().withMessage('password is required').isLength({min:8}).withMessage('password must not be less 8 character')
 
 ],authController.postLog)
+router.get('/',authController.Index)
 
 
  module.exports = router

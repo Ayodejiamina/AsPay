@@ -1,11 +1,21 @@
 <%- include('../includes/header.ejs')%>
+<style>
+  body{
+  background: url(/images/line3.jpg);
+background-repeat: no-repeat;
+background-size: 100% 100%;
+width: 100%;
+background-attachment: fixed;
+}
+</style>
 </head>
-<body>
+<body style="background-color: whitesmoke;">
+
   <div class="container" style="margin-top: 50px;">
-    <div class="text-center"><img src="/images/a's pay (2).jpg" alt="" style="width: 150px;height: 150px;"> </div>
     <div class="row ">
       <div class="cont col-md-4 offset-md-4 p-3">
-        <h2 class="text-center h2">Login</h2>
+        <div class="text-center"><img src="/images/a's pay (2).jpg" alt="" style="width:100px;height: 100px;border-radius: 50%;"> </div>
+        <h2 class="text-left h2">Sign in to A'sPay</h2>
         <form action="/login" method="post">
           <small style="color: red;"><%=perrors %></small>
               <div class="form-group my-3">
@@ -22,15 +32,17 @@
               <div class="form-group my-3">
                 <label for="exampleInputName">Password</label>
                 <i class="fas fa-eye-slash" id="show"></i>
-                <input type="password" placeholder="Enter password" name="password" id="pawd" >
+                <input type="password" placeholder=". . . . . . ." name="password" id="pawd" >
                 <% for(let err of logErr){
                   if(err.path == "password"){%>
                     <small style="color: red;"><%= err.msg%></small>
                 <%  }
                 }%>              </div>
                 <small style="color: red;"><%=emerr %></small>
+                <small>Forgot Password?<a href="">Reset It</a></small>
+
               <div class="text-center my-3">
-                <button type="submit" class="btn" id="play">Login</button>
+                <button type="submit" class="btn" id="play">Sign In</button>
               </div>
               <div class="container">
                 <div class="cont-or">
@@ -70,6 +82,12 @@
   
     }
   }
+  const allInput = document.querySelector('input');
+    allInput.addEventListener('input', () => {
+      if (allInput.classList.contains('errBord')) {
+        allInput.classList.remove('errBord');
+      }
+    });
   </script>
 </body>
 </html>

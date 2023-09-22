@@ -2,6 +2,7 @@ const https = require('https')
 const express = require('express')
 const bodyParser = require('body-parser')
 const authRoutes = require('./routes/auth')
+const userRoutes = require('./routes/user')
 const auths = require('./models/auth')
 const path = require('path')
 const flash = require('connect-flash')
@@ -24,6 +25,7 @@ app.use(session({
     cookie: {}
 }))
 app.use(authRoutes)
+app.use(userRoutes)
 app.set('view engine','ejs')
 sequelize.sync().then(result=>{
     app.listen(4000)

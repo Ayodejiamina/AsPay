@@ -1,5 +1,6 @@
 const auth = require('../models/auth')
 const bcrypt = require('bcrypt')
+const nodemailer = require('nodemailer')
 const { validationResult } = require('express-validator')
 
 exports.Register = (req, res) => {
@@ -25,11 +26,21 @@ exports.postReg = (req, res) => {
         })
     } else {
         bcrypt.hash(password, 12).then(hashed => {
+            let account =[]
+            let acctnum;
+            for(let i = 0;i<8;i++){ 
+                acctnum = Math.floor(Math.random()*10);
+                account += acctnum
+                console.log(account)
+            }
+      
+
             auth.create({
                 name: name,
                 email: email,
                 phone: phone,
-                password: hashed
+                password: hashed,
+                acctNum:"31"+account
             }).then(result => {
                 req.session.save(() => {
                     return res.redirect('/login')
@@ -81,7 +92,7 @@ exports.postLog = (req, res) => {
                 req.session.userData = result
                 // console.log(result)
                 return req.session.save(() => {
-                    res.redirect('/')
+                    res.redirect('/dashboard')
                 })
             }).catch(err => {
                 console.log(err)
@@ -89,4 +100,7 @@ exports.postLog = (req, res) => {
 
         })
     }
+}
+exports.Index =(req,res)=>{
+res.render('index.ejs',{title:"Home"})
 }

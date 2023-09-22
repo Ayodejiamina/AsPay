@@ -20,7 +20,12 @@ const authModel = sequelize.define('auth',{
     type: Sequelize.STRING,
     unique:true,
     allowNull:false,
-  }, 
+  },
+   acctNum:{
+    type: Sequelize.STRING,
+    unique:true,
+    allowNull:false,
+  },
   password:{
     type: Sequelize.STRING,
     allowNull:false,
