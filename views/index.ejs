@@ -2,7 +2,7 @@
 </head>
 <body>
     <%-include('includes/navbar.ejs')%>
-    <div class="container" id="scroll">
+    <div class="container wow slideInRight" id="scroll">
        <div class="row justify-content-center">
         <div class="col-lg-6 col-md-6 col-sm-10 cold1">
          <h2>We are <span style="color:rgb(70, 145, 70)">Beyond Banking</span></h2>
@@ -30,7 +30,7 @@
         </div>
        </div>
     </div>
-    <div class="container my-4"  id="scroll">
+    <div class="container my-4 wow slideInLeft"  id="scroll">
       <div class="row justify-content-between">
          <div class="col-lg-4 col-md-6 col-sm-11 coldss py-3 my-3">
             <div><i class='fas fa-wallet'></i></div>
@@ -63,7 +63,7 @@
          </div>
       </div>
     </div>
-    <div class="container"  id="scroll">
+    <div class="container wow slideInRight "  id="scroll">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-6 col-sm-10 cold2">
                 <img src="/images/fut.gif" alt="">   
@@ -76,7 +76,7 @@
          
         </div>
      </div>
-     <div class="container"  id="scroll">
+     <div class="container wow fadeInLeftBig"  id="scroll">
         <div class="row">
            <div class="col-lg-6 col-md-6 col-sm-12 cold3">
             <h2>Making opportunities <span style="color:rgb(70, 145, 70)">accessible to everyone</span></h2>
@@ -87,7 +87,7 @@
         </div>
      </div>
      </div>
-     <div class="container"  id="scroll">
+     <div class="container wow slideInRight"  id="scroll">
       <div class="row">
          <div class="col-lg-6 col-md-6 col-sm-12  cold4">
             <img src="/images/phone23.png" alt="">
@@ -99,7 +99,7 @@
      
    </div>
    </div>
-     <div class="container"  id="scroll">
+     <div class="container wow fadeInLeft"  id="scroll">
         <div class="row">
            <div class="col-lg-6 col-md-6 col-sm-12 cold6">
             <div class="p-4 my-5">
@@ -116,7 +116,7 @@
         </div>
      </div>
      </div>
-     <div class="container my-5"  id="scroll">
+     <div class="container my-5 wow fadeInRight"  id="scroll">
       <div class="text-center h2"><h2>Don't Just Take Our Word For It</h2></div>
       <div class="owl-carousel owl-theme my-3">
          <div class="item py-3 px-3">
@@ -227,7 +227,7 @@
      </div>
 
      </div>
-     <div class="container"  id="scroll">
+     <div class="container wow slideInRight"  id="scroll">
       <div class="text-center h2"><h2>Our Patners</h2></div>
       <div class="owl-carousel owl-theme my-3">
          <div class="item"><img src="/images/bbc.svg" alt="" style="height: 100px;width: 100px;"></div>
@@ -324,6 +324,8 @@
 
     
      <%-include('includes/footer.ejs')%>
+
+   
     <script>
       $('.owl-carousel').owlCarousel({
     items:4,
@@ -345,19 +347,8 @@
     }
 })
 
+new WOW().init();
 
-let sections = document.getElementById('scroll')
-window.onscroll = ()=>{
-   sections.forEach(scro=>{
-      let top = window.scrollY;
-      let offset = scro.offsetTop-150;
-      let height = scro.offsetHeight;
-
-      if( top >= offset && top < offset + height){
-         scro.classList.add
-      }
-   })
-}
     </script>
   
 </body>
