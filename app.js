@@ -12,8 +12,8 @@ const Sequelize = require('sequelize')
 const sequelize = require('./database/connect')
 const app = express()
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
-app.use(bodyParser.urlencoded({extended:true}))
-app.use(express.static(path.join(__dirname,"public")))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.static(path.join(__dirname, "public")))
 app.use(flash())
 app.use(session({
     secret: 'AsPay Web Banking',
@@ -26,11 +26,11 @@ app.use(session({
 }))
 app.use(authRoutes)
 app.use(userRoutes)
-app.set('view engine','ejs')
-sequelize.sync().then(result=>{
-    app.listen(4000)
+app.set('view engine', 'ejs')
+sequelize.sync().then(result => {
+    app.listen(4001)
     console.log('connected to port 4000')
-}).catch(err=>{
+}).catch(err => {
     console.log(err)
 })
 
